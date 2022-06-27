@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TrabalhoDispositivosMoveis">
         <activity
-            android:name=".CartasActivity"
+            android:name=".MateriasActivity"
             android:exported="true"
             android:screenOrientation="portrait">
 

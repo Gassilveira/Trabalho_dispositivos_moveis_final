@@ -1,9 +1,7 @@
 package com.example.trabalhodispositivosmoveis;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -63,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        Intent intent = new Intent(MainActivity.this, CartasActivity.class);
+        Intent intent = new Intent(MainActivity.this, MateriasActivity.class);
         startActivity( intent );
     }
 }
