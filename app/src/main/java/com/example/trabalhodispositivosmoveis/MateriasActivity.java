@@ -2,7 +2,10 @@ package com.example.trabalhodispositivosmoveis;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -11,6 +14,8 @@ import java.util.List;
 public class MateriasActivity extends AppCompatActivity {
 
     private ListView lvMaterias;
+
+    private List<Materia> listaMaterias;
 
 
     @Override
@@ -24,11 +29,19 @@ public class MateriasActivity extends AppCompatActivity {
         @Override
         protected void onStart(){
             super.onStart();
-            Banco conn = new Banco(this);
-            carregarMaterias();
+            listaMaterias = carregarMaterias();
+
+            lvMaterias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(MateriasActivity.this, MainActivity.class);
+                    intent.putExtra("Materia", listaMaterias.get(position).getIdMateria());
+                    startActivity( intent );
+                }
+            });
         }
 
-    protected void carregarMaterias(){
+    protected List<Materia> carregarMaterias(){
         List<Materia> lista = MateriaDAO.getMaterias(this);
 
         lvMaterias.setEnabled( true );
@@ -36,5 +49,7 @@ public class MateriasActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, lista);
         lvMaterias.setAdapter( adapter );
+
+        return lista;
     }
 }
