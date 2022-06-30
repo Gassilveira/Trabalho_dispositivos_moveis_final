@@ -49,6 +49,10 @@ public class Materia {
 
     @Override
     public String toString() {
-        return nome + " - " + (qtdCertas + qtdErradas) + "/" + qtdQuestoes + " " + (qtdCertas / (qtdCertas + qtdErradas)) + "%";
+        if ((qtdCertas + qtdErradas) == 0) {
+            return nome + " - " + (qtdCertas + qtdErradas) + "/" + qtdQuestoes + " " + "0%";
+        } else {
+            return nome + " - " + (qtdCertas + qtdErradas) + "/" + qtdQuestoes + " " + ((qtdCertas / (qtdCertas + qtdErradas)) * 100)+ "%";
+        }
     }
 }

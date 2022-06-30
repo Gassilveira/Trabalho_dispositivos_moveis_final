@@ -44,6 +44,11 @@ public class MateriasActivity extends AppCompatActivity {
     protected List<Materia> carregarMaterias(){
         List<Materia> lista = MateriaDAO.getMaterias(this);
 
+        if(lista.size() == 0){
+            MateriaDAO.criaMaterias(this);
+            lista = MateriaDAO.getMaterias(this);
+        }
+
         lvMaterias.setEnabled( true );
 
         ArrayAdapter adapter = new ArrayAdapter<>(this,

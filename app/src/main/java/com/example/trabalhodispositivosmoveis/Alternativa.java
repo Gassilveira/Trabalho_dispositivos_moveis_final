@@ -38,4 +38,9 @@ public class Alternativa {
     public void setIndCerta(String indCerta) {
         this.indCerta = indCerta;
     }
+
+    @Override
+    public String toString() {
+        return texto;
+    }
 }

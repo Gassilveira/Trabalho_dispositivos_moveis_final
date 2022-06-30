@@ -18,7 +18,8 @@ public class AlternativaDAO {
         Cursor cursor = db.rawQuery(
                 "SELECT idAlternativa, idQuestao, texto, indCerta " +
                         "FROM alternativa " +
-                        "ORDER BY idAlternativa",
+                        "WHERE idQuestao =  " + Questao +
+                        " ORDER BY idAlternativa",
                 null);
 
         if(cursor.getCount() > 0){

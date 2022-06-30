@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        questoes = QuestaoDAO.getQuestao(this, Integer.parseInt(getIntent().getExtras().getString("Materia")));
+        questoes = QuestaoDAO.getQuestao(this, getIntent().getExtras().getInt("Materia"));//Integer.parseInt(getIntent().getExtras().getString("Materia")));
 
         if(questoes.size() == 0){
             AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
@@ -83,8 +83,11 @@ public class MainActivity extends AppCompatActivity {
     protected void verificaQuestao(int pos){
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         Questao q = new Questao();
+        q.setIdQuestao(questoes.get(questao).getIdQuestao());
 
-        if(questoes.get(questao).getAlternativas().get(pos).getIndCerta() == "S"){
+        String indCerto = questoes.get(questao).getAlternativas().get(pos).getIndCerta();
+
+        if(indCerto.equals("S")){
             q.setIndSituacao("C");
             QuestaoDAO.update(this, q);
 
